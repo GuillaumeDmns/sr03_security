@@ -2,7 +2,6 @@
   require_once('model/users.php');
   require_once('model/messages.php');
   require_once('authentication.php');
-  require_once('messages.php');
 
   function auth_routes($action) {
     if (isLoggedOn()) {
@@ -16,14 +15,20 @@
           break;
         case 'messagerie':
           if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            sendMessage();
+            createMessage();
           }
 
           $users = getUsers();
           $messages = getMessages();
+
           require('view/messagerie.php');
           break;
         case 'virement':
+          if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: http://localhost/sr03_security/?action=clients');
+            break; 
+          }
+
           require('view/virement.php');
           break;
         default:

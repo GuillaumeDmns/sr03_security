@@ -15,6 +15,9 @@
         <h2>Bienvenue <?php echo $_SESSION["connected_user"]["prenom"];?> <?php echo $_SESSION["connected_user"]["nom"];?></h2>
       </header>
       <div class="form">
+        <?php echo "Confirmation de votre virement de ".$_POST['solde']." à ".$_POST['id_user']; ?>
+      </div>
+      <div class="form">
         <form method="GET" >
           <input type="hidden" name="action" value="home">
           <button>Accueil</button>

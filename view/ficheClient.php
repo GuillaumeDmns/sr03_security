@@ -22,12 +22,25 @@
               echo '<td>'.$user['nom'].'</td>';
               echo '<td>'.$user['prenom'].'</td>';
               echo '<td>'.$user['numero_compte'].'</td>';
+              echo '<td><a href="http://localhost/sr03_security/?action=clients&user='.$user['login'].'">Voir</a></td>';
               echo '</tr>';
             }
 
              ?>
           </table>
       </div>
+      <?php if (isset($_GET['user']) && $_GET['user'] !== '') { 
+        $user = $users[$_GET['user']];
+      ?>
+      <div class="form">
+        <form method="POST" action="http://localhost/sr03_security/?action=virement">
+          <?php echo "Faire un virement à " . $user['prenom'] . " " . $user['nom']; ?><br /><br />
+          <input type="hidden" name="id_user" value="<?php $user['id_user'] ?>">
+          <input type="text" name="montant" />
+          <button>Envoyer</button>
+        </form>
+      </div>
+      <?php } ?>
       <div class="form">
         <form method="GET">
           <input type="hidden" name="action" value="home">
