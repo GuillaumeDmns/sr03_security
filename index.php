@@ -12,7 +12,7 @@
         auth_routes($_GET['action']);
       }
   }  else {
-	auth_routes("accueil");
+	auth_routes("home");
   }
 
 ?>
