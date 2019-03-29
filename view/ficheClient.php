@@ -17,11 +17,11 @@
       <div class="liste">
           <table>
             <?php
-            foreach ($listeUsers as $cle => $unUser) {
+            foreach ($users as $key => $user) {
               echo '<tr>';
-              echo '<td>'.$unUser['nom'].'</td>';
-              echo '<td>'.$unUser['prenom'].'</td>';
-              echo '<td>'.$unUser['numero_compte'].'</td>';
+              echo '<td>'.$user['nom'].'</td>';
+              echo '<td>'.$user['prenom'].'</td>';
+              echo '<td>'.$user['numero_compte'].'</td>';
               echo '</tr>';
             }
 
