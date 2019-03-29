@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  require('controller/myController.php');
+  require('controller/main.php');
 
   if (isset($_GET['action'])) {
       if ($_GET['action'] == 'authenticate') {

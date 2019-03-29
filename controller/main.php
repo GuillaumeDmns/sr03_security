@@ -1,5 +1,5 @@
 <?php
-  require ('model/myModel.php');
+  require ('model/users.php');
 
   function isLoggedOn() {
       if(!isset($_SESSION["connected_user"]) || $_SESSION["connected_user"] == "") {

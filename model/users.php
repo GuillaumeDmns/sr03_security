@@ -1,7 +1,7 @@
 <?php
 define('DB_HOST','127.0.0.1');
 define('DB_USER','root');
-define('DB_PASSWD','');
+define('DB_PASSWD','natandanous');
 define('DB_NAME','sr03');
 
 function findUserByLoginPwd($login, $pwd) {
