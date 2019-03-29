@@ -2,6 +2,9 @@
 require_once('db.php');
 
 function changeBalance($numero_compte, $montant) {
+    $montant = (int)$montant;
+    $numero_compte = (int)$numero_compte;
+    
     if ($montant < 0) {
         return false;
     }
