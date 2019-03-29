@@ -11,7 +11,7 @@ function query($q) {
         throw new Exception('Erreur connection BDD (' . $mysqli->connect_errno . ') '. $mysqli->connect_error, 1);
     } else {
         if (!$result = $mysqli->query($q)) {
-            throw new Exception('Erreur requête BDD (' . $mysqli->connect_errno . ') '. $mysqli->connect_error, 1);
+            throw new Exception('Erreur requête BDD (' . $mysqli->connect_errno . ') '. $mysqli->connect_error . '//// query = ' . $q, 1);
         } else {
             return $result;
             $result->free();

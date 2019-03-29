@@ -16,22 +16,30 @@
       </header>
       <div class="liste">
           <table>
-            
+            <?php
+            foreach ($messages as $key => $message) {
+              echo '<tr>';
+              echo '<td>'.$message['sujet_msg'].'</td>';
+              echo '<td>'.$message['corps_msg'].'</td>';
+              echo '</tr>';
+            }
+
+             ?>
           </table>
       </div>
       <div class="form">
         <form method="POST">
-          <select name="user">
+          <select name="id_user_to">
             <?php
               foreach ($users as $key => $user) {
-                echo '<option value="'.$user['id'].'">'.$user['prenom'].' '.$user['nom'].'</option>';
+                echo '<option value="'.$user['id_user'].'">'.$user['prenom'].' '.$user['nom'].'</option>';
               }
 
             ?>
           </select>
           <br />
-          <textarea name="message" rows="10"></textarea>
-          <input type="hidden" name="action" value="send_message">
+          <input type="text" name="sujet_msg" />
+          <textarea name="corps_msg" rows="10"></textarea>
           <button>Envoyer</button>
         </form>
       </div>
