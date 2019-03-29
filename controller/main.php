@@ -27,13 +27,13 @@
         case 'virement':
           if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: http://localhost/sr03_security/?action=clients');
-            break; 
+            break;
           }
 
           if (changeBalance($_POST['numero_compte'], $_POST['montant'])) {
             $message = "Confirmation de votre virement de ".$_POST['montant']." à ".$_POST['numero_compte'];
           } else {
-            $message = "Une erreur est survenue";
+            $message = "Une erreur est survenue <br />";
           }
 
           require('view/virement.php');

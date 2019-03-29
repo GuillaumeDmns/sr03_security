@@ -4,7 +4,7 @@ require_once('db.php');
 function changeBalance($numero_compte, $montant) {
     $montant = (int)$montant;
     $numero_compte = (int)$numero_compte;
-    
+
     if ($montant < 0) {
         return false;
     }
@@ -17,19 +17,15 @@ function changeBalance($numero_compte, $montant) {
 
     $solde = $_SESSION["connected_user"]['solde_compte'] - $montant;
 
-    if ($solde <= 0) {
+    if ($solde < 0) {
         return false;
     }
 
     $solde_2 = $user['solde_compte'] + $montant;
 
-    $result = query("update users set solde_compte=".$solde." where id_user=".$_SESSION["connected_user"]['id_user']);
-    $result_2 = query("update users set solde_compte=".$solde_2." where id_user=".$user['id_user']);
-    if ($result && $result_2) {
-        return true;
-    } else {
-        return false;
-    }
+    $result = query("update USERS set solde_compte=".$solde." where id_user=".$_SESSION["connected_user"]['id_user']);
+    $result_2 = query("update USERS set solde_compte=".$solde_2." where id_user=".$user['id_user']);
+    return $result && $result_2;
 }
 
 ?>
