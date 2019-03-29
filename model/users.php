@@ -13,6 +13,18 @@ function findUserByLoginPwd($login, $pwd) {
   return $utilisateur;
 }
 
+function findUserByAccount($numero_compte) {
+  $result = query("select nom,prenom,login,id_user,numero_compte,profil_user,solde_compte from users where numero_compte='$numero_compte'");
+
+  if ($result->num_rows === 0) {
+    $utilisateur = false;
+  } else {
+    $utilisateur = $result->fetch_assoc();
+  }
+
+  return $utilisateur;
+}
+
 
 function getUsers() {
   $users = array();
