@@ -6,18 +6,10 @@
   if (isset($_GET['action'])) {
       if ($_GET['action'] == 'authenticate') {
           authenticate($_GET['login'],$_GET['mdp']);
-      } else if ($_GET['action'] == 'home') {
-          home();
-      } else if ($_GET['action'] == 'messagerie') {
-          messages();
-      } else if ($_GET['action'] == 'virement') {
-          virements();
-      } else if ($_GET['action'] == 'clients') {
-          clients();
       } else if ($_GET['action'] == 'disconnect') {
           disconnect();
       } else {
-          badaction();
+        auth_routes($_GET['action']);
       }
   }  else {
       // aucune action => accueil

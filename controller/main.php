@@ -10,10 +10,6 @@
       return true;
   }
 
-  function badaction() {
-    require('view/erraction.php');
-  }
-
   function authenticate($login, $mdp) {
       if ($login == "" || $mdp == "") {
           // manque login ou mot de passe
@@ -31,34 +27,32 @@
       }
   }
 
-  function home() {
-      if (isLoggedOn()) {
-        require('view/accueil.php');
-      }
-  }
-
-  function clients() {
-      if (isLoggedOn()) {
-          $listeUsers = findAllUsers();
-          require('view/ficheClient.php');
-      }
-  }
-
-  function messages() {
-      if (isLoggedOn()) {
-          require('view/messagerie.php');
-      }
-  }
-
-  function virements() {
-      if (isLoggedOn()) {
-          require('view/virement.php');
-      }
-  }
-
   function disconnect() {
     unset($_SESSION["connected_user"]);
     require('view/login.php');
+  }
+
+  function auth_routes($action) {
+    if (isLoggedOn()) {
+      switch ($action) {
+        case 'home':
+          require('view/accueil.php');
+          break;
+        case 'clients':
+          $listeUsers = findAllUsers();
+          require('view/ficheClient.php');
+          break;
+        case 'messagerie':
+          require('view/messagerie.php');
+          break;
+        case 'virement':
+          require('view/virement.php');
+          break;
+        default:
+          require('view/erraction.php');
+          break;
+      }
+    }
   }
 
 ?>
