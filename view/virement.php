@@ -13,6 +13,7 @@
     <article>
       <header>
         <h2>Bienvenue <?php echo $_SESSION["connected_user"]["prenom"];?> <?php echo $_SESSION["connected_user"]["nom"];?></h2>
+        <p>Vous avez <?php echo $_SESSION["connected_user"]["solde_compte"]; ?> sur votre compte.</p>
       </header>
       <div class="form">
         <?php echo $message; ?> <br />

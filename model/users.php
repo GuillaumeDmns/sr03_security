@@ -26,6 +26,7 @@ function findUserByAccount($numero_compte) {
 }
 
 
+
 function getUsers() {
   $users = array();
   $result = query("select nom,prenom,login,id_user,numero_compte,profil_user,solde_compte from USERS");

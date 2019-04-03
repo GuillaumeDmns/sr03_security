@@ -13,24 +13,33 @@
     <article>
       <header>
         <h2>Bienvenue <?php echo $_SESSION["connected_user"]["prenom"];?> <?php echo $_SESSION["connected_user"]["nom"];?></h2>
+        <p>Vous avez <?php echo $_SESSION["connected_user"]["solde_compte"]; ?> sur votre compte.</p>
       </header>
       <div class="liste">
           <table>
+            <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Numéro de compte</th>
+              <?php if ($_SESSION["connected_user"]["profil_user"] == "CONSEILLER") echo '<th>Solde</th>'; ?>
+            </tr>
             <?php
             foreach ($users as $key => $user) {
               echo '<tr>';
               echo '<td>'.$user['nom'].'</td>';
               echo '<td>'.$user['prenom'].'</td>';
               echo '<td>'.$user['numero_compte'].'</td>';
-              echo '<td>'.$user['solde_compte'].'</td>';
-              echo '<td><a href="http://localhost/sr03_security/?action=clients&user='.$user['login'].'">Voir</a></td>';
+              if ($_SESSION["connected_user"]["profil_user"] == "CONSEILLER") {
+                echo '<td>'.$user['solde_compte'].'</td>';
+              }
+              echo '<td><a href="http://localhost/sr03_security/?action=clients&user='.$user['login'].'">Virement</a></td>';
               echo '</tr>';
             }
 
              ?>
           </table>
       </div>
-      <?php if (isset($_GET['user']) && $_GET['user'] !== '') { 
+      <?php if (isset($_GET['user']) && $_GET['user'] !== '') {
         $user = $users[$_GET['user']];
       ?>
       <div class="form">

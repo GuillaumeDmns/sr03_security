@@ -12,7 +12,8 @@
   <main>
     <article>
       <header>
-        <h2>Bienvenue <?php echo $_SESSION["connected_user"]["prenom"];?> <?php echo $_SESSION["connected_user"]["nom"];?></h2>
+        <h2>Bienvenue <?php echo $_SESSION["connected_user"]["prenom"]." ".$_SESSION["connected_user"]["nom"].", ".strtolower($_SESSION["connected_user"]["profil_user"]); ?></h2>
+        <p>Vous avez <?php echo $_SESSION["connected_user"]["solde_compte"]; ?> sur votre compte.</p>
       </header>
       <div class="form">
         <form method="GET" >
@@ -21,12 +22,14 @@
         </form>
         <form method="GET" >
           <input type="hidden" name="action" value="virement">
-          <button>Virement</button>
+          <button>Effectuer un virement</button>
         </form>
+        <?php if ($_SESSION["connected_user"]["profil_user"] == "CONSEILLER") { ?>
         <form method="GET" >
-          <input type="hidden" name="action" value="clients">
-          <button>Clients</button>
+        <input type="hidden" name="action" value="clients">
+        <button>Fiches clients</button>
         </form>
+        <?php } ?>
         <form method="GET" >
           <input type="hidden" name="action" value="disconnect">
           <button>Déconnexion</button>
