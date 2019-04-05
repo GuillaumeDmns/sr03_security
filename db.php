@@ -12,8 +12,6 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 
-return $pdo;
-
 function query($q) {
     $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWD, DB_NAME);
 

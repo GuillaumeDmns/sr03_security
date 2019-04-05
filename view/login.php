@@ -1,3 +1,8 @@
+<?php
+$token = uniqid();
+$_SESSION['token'] = $token;
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -18,6 +23,7 @@
       <div class="login-page">
         <div class="form">
             <form method="GET" >
+                <input type="hidden" name="token" id="token" value="<?php echo $token; ?>" />
                 <input type="hidden" name="action" value="authenticate">
                 <input type="text" name="login" placeholder="login"/>
                 <input type="password" name="mdp" placeholder="mot de passe"/>
