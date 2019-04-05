@@ -12,8 +12,8 @@
   <main>
     <article>
       <header>
-        <h2>Bienvenue <?php echo $_SESSION["connected_user"]["prenom"];?> <?php echo $_SESSION["connected_user"]["nom"];?></h2>
-        <p>Vous avez <?php echo $_SESSION["connected_user"]["solde_compte"]; ?> sur votre compte.</p>
+        <h2>Bienvenue <?php echo htmlspecialchars($_SESSION["connected_user"]["prenom"]);?> <?php echo htmlspecialchars($_SESSION["connected_user"]["nom"]);?></h2>
+        <p>Vous avez <?php echo htmlspecialchars($_SESSION["connected_user"]["solde_compte"]); ?> sur votre compte.</p>
       </header>
       <div class="liste">
           <table>
@@ -26,9 +26,9 @@
             <?php
             foreach ($users as $key => $user) {
               echo '<tr>';
-              echo '<td>'.$user['nom'].'</td>';
-              echo '<td>'.$user['prenom'].'</td>';
-              echo '<td>'.$user['numero_compte'].'</td>';
+              echo '<td>'.htmlspecialchars($user['nom']).'</td>';
+              echo '<td>'.htmlspecialchars($user['prenom']).'</td>';
+              echo '<td>'.htmlspecialchars($user['numero_compte']).'</td>';
               if ($_SESSION["connected_user"]["profil_user"] == "CONSEILLER") {
                 echo '<td>'.$user['solde_compte'].'</td>';
               }
@@ -44,7 +44,7 @@
       ?>
       <div class="form">
         <form method="POST" action="http://localhost/sr03_security/?action=virement">
-          <?php echo "Faire un virement à " . $user['prenom'] . " " . $user['nom']; ?><br /><br />
+          <?php echo "Faire un virement à " . htmlspecialchars($user['prenom']) . " " . htmlspecialchars($user['nom']); ?><br /><br />
           <?php echo '<input type="hidden" name="numero_compte" value="'.$user['numero_compte'].'" />'; ?>
           <input type="text" name="montant" />
           <button>Envoyer</button>

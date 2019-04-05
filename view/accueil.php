@@ -12,8 +12,8 @@
   <main>
     <article>
       <header>
-        <h2>Bienvenue <?php echo $_SESSION["connected_user"]["prenom"]." ".$_SESSION["connected_user"]["nom"].", ".strtolower($_SESSION["connected_user"]["profil_user"]); ?></h2>
-        <p>Vous avez <?php echo $_SESSION["connected_user"]["solde_compte"]; ?> sur votre compte.</p>
+        <h2>Bienvenue <?php echo htmlspecialchars($_SESSION["connected_user"]["prenom"])." ".htmlspecialchars($_SESSION["connected_user"]["nom"]).", ".strtolower(htmlspecialchars($_SESSION["connected_user"]["profil_user"])); ?></h2>
+        <p>Vous avez <?php echo htmlspecialchars($_SESSION["connected_user"]["solde_compte"]); ?> sur votre compte.</p>
       </header>
       <div class="form">
         <form method="GET" >

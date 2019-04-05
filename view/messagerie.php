@@ -12,16 +12,16 @@
   <main>
     <article>
       <header>
-        <h2>Bienvenue <?php echo $_SESSION["connected_user"]["prenom"];?> <?php echo $_SESSION["connected_user"]["nom"];?></h2>
-        <p>Vous avez <?php echo $_SESSION["connected_user"]["solde_compte"]; ?> sur votre compte.</p>
+        <h2>Bienvenue <?php echo htmlspecialchars($_SESSION["connected_user"]["prenom"]);?> <?php echo htmlspecialchars($_SESSION["connected_user"]["nom"]);?></h2>
+        <p>Vous avez <?php echo htmlspecialchars($_SESSION["connected_user"]["solde_compte"]); ?> sur votre compte.</p>
       </header>
       <div class="liste">
           <table>
             <?php
             foreach ($messages as $key => $message) {
               echo '<tr>';
-              echo '<td>'.$message['sujet_msg'].'</td>';
-              echo '<td>'.$message['corps_msg'].'</td>';
+              echo '<td>'.htmlspecialchars($message['sujet_msg']).'</td>';
+              echo '<td>'.htmlspecialchars($message['corps_msg']).'</td>';
               echo '</tr>';
             }
 
@@ -33,7 +33,7 @@
           <select name="id_user_to">
             <?php
               foreach ($users as $key => $user) {
-                echo '<option value="'.$user['id_user'].'">'.$user['prenom'].' '.$user['nom'].'</option>';
+                echo '<option value="'.$user['id_user'].'">'.htmlspecialchars($user['prenom']).' '.htmlspecialchars($user['nom']).'</option>';
               }
 
             ?>
