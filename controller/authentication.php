@@ -9,8 +9,8 @@ function isLoggedOn() {
 }
 
 function authenticate($login, $mdp) {
-  if (isset($_SESSION['token']) AND isset($_GET['token']) AND !empty($_SESSION['token']) AND !empty($_GET['token'])) {
-    if ($_SESSION['token'] == $_GET['token']) {
+  if (isset($_SESSION['token']) AND isset($_POST['token']) AND !empty($_SESSION['token']) AND !empty($_POST['token'])) {
+    if ($_SESSION['token'] == $_POST['token']) {
       if ($login == "" || $mdp == "") {
         // manque login ou mot de passe
         $errmsg = "nullvalue";
@@ -22,7 +22,7 @@ function authenticate($login, $mdp) {
           require('view/errauthent.php');
         } else {
           $_SESSION["connected_user"] = $utilisateur;
-          require('view/accueil.php');
+          header('Location: http://localhost/sr03_security/?action=home');
         }
       }
     }

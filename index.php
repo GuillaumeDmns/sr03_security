@@ -5,7 +5,7 @@
 
   if (isset($_GET['action'])) {
       if ($_GET['action'] == 'authenticate') {
-          authenticate($_GET['login'],$_GET['mdp']);
+          authenticate($_POST['login'],$_POST['mdp']);
       } else if ($_GET['action'] == 'disconnect') {
           disconnect();
       } else {

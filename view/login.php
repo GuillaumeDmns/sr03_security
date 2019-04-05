@@ -22,7 +22,7 @@ $_SESSION['token'] = $token;
 
       <div class="login-page">
         <div class="form">
-            <form method="GET" >
+            <form method="POST" action="http://localhost/sr03_security/?action=authenticate" >
                 <input type="hidden" name="token" id="token" value="<?php echo $token; ?>" />
                 <input type="hidden" name="action" value="authenticate">
                 <input type="text" name="login" placeholder="login"/>
