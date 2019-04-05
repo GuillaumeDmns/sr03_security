@@ -7,7 +7,7 @@ function findUserByLoginPwd($login, $pwd) {
   $stmt->execute(['login'=>$login,'pwd'=>$pwd]);
   $result = (array) $stmt->fetchObject();
 
-  if (!$result[0]) {
+  if (array_key_exists(0, $result) && !$result[0]) {
     return false;
   } else {
     return $result;
